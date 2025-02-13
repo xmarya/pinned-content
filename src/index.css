@@ -1,0 +1,160 @@
+:root {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --check: 3px solid pink;
+  --slider-bg: #FF322C;
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+body {
+ width: 128rem;
+ background-color: #e5e7eb;
+ color: #242424;
+ 
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+
+  &:hover {
+    color: #535bf2;
+  }
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:hover {
+    border-color: #646cff;
+  }
+
+  &:focus,
+  &:focus-visible {
+
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+
+h2, p {
+  font-size: 2.4rem;
+}
+
+.half-vp {
+  height: 50svh;
+}
+.full-vp {
+  height: 100svh;
+}
+
+.section-wrapper {
+
+  display: grid;
+  grid-template-columns:repeat(8, 1fr);
+  align-content: start;
+  margin-inline: 2rem;
+
+  border: var(--check);
+}
+
+.sticky-side {
+  grid-column: 2 / 5;
+  position: sticky;
+  top: 2rem;
+  max-height: calc(8rem * 3); /*3 is the number of shown labels at once*/
+  overflow: hidden;
+
+  border: var(--check);
+  border-color: royalblue;
+}
+
+.non-sticky-side {
+  grid-column: 5 / -1;
+  display: flex;
+  flex-direction: column;
+  /* I decided to add the space in the .description-list items
+   padding-top: 50svh; */
+
+  border: var(--check);
+  border-color: royalblue;
+}
+
+.label-list {
+  display: flex;
+  flex-direction: column;
+  margin-block: 8rem;
+
+  transform: translate3d(0, 0, 0);
+  transition: all 0.4s ease-in;
+
+  h2 {
+    color: #e5e7eb;
+    height: 8rem;
+    opacity: 0.3;
+    transition: all 0.4s ease-in;
+  }
+
+}
+
+.description-list {
+  height: 80svh;
+  /* as the same as the height of the label */
+  padding-top: 8rem;
+  transition: all 0.4s ease-in;
+
+  border: var(--check);
+  border-color: yellow;
+}
+
+.red-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--slider-bg);
+  z-index: -1;
+}
+
+.transparent-bg {
+  background: linear-gradient(0deg,
+    #FF322C 5%,
+    rgba(255, 50, 44, 0) 35%,
+    rgba(255, 50, 44, 0) 65%,
+    #FF322C 95%);
+}
+
+.white-text {
+  color: orange;
+}
