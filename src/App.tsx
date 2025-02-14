@@ -11,12 +11,21 @@ export default function App() {
       <ActiveIndexProvider>
         <div className="section-wrapper">
           <div className="sticky-side">
-          <div className="red-bg" />
+            <div className="gutter-1">
+              <div className="red-bg" />
+            </div>
+
             <MovingList>
               {stickyData.map((data, index) => (
-                <Label key={index} index={index}>{data.title}</Label>
+                <Label key={index} index={index}>
+                  {data.title}
+                </Label>
               ))}
             </MovingList>
+            
+            <div className="gutter-2">
+              <div className="transparent-bg"/>
+            </div>
           </div>
 
           <ul className="non-sticky-side">
