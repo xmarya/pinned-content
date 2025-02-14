@@ -71,6 +71,7 @@ button {
 
 h2, p {
   font-size: 2.4rem;
+  color: #e5e7eb;
 }
 
 .half-vp {
@@ -81,13 +82,7 @@ h2, p {
 }
 
 .section-wrapper {
-
-  display: grid;
-  grid-template-columns:repeat(8, 1fr);
-  align-content: start;
-  margin-inline: 2rem;
-
-  position: relative;
+  /* position: relative; */
   border: var(--check);
 }
 
@@ -95,7 +90,7 @@ h2, p {
   grid-column: 2 / 5;
   position: sticky;
   top: 2rem;
-  max-height: calc(8rem * 3); /*3 is the number of shown labels at once*/
+  max-height: calc(9rem * 3); /*3 is the number of shown labels at once*/
   overflow: hidden;
 
   border: var(--check);
@@ -103,7 +98,7 @@ h2, p {
 }
 
 .non-sticky-side {
-  grid-column: 5 / -1;
+  grid-column: 5 / 11;
   display: flex;
   flex-direction: column;
   /* I decided to add the space in the .description-list items*/
@@ -120,7 +115,7 @@ h2, p {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-block: 8rem;
+  margin-block: 9rem;
   z-index: 2;
 
 
@@ -128,8 +123,7 @@ h2, p {
   transition: all 0.4s ease-in;
 
   h2 {
-    color: #e5e7eb;
-    height: 8rem;
+    height: 9rem;
     opacity: 0.3;
     transition: all 0.4s ease-in;
   }
@@ -180,4 +174,15 @@ h2, p {
 
 .white-text {
   color: orange;
+}
+
+.grid-wrapper {
+  max-width: 100rem;
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(min(8.3333rem, 100%), 1fr));
+  gap: 2rem;
 }

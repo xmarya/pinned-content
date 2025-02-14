@@ -15,26 +15,34 @@ export default function App() {
               <div className="red-bg" />
             </div>
 
-            <MovingList>
-              {stickyData.map((data, index) => (
-                <Label key={index} index={index}>
-                  {data.title}
-                </Label>
-              ))}
-            </MovingList>
-            
+            <div className="grid-wrapper">
+              <div className="grid">
+                <MovingList>
+                  {stickyData.map((data, index) => (
+                    <Label key={index} index={index}>
+                      {data.title}
+                    </Label>
+                  ))}
+                </MovingList>
+              </div>
+            </div>
+
             <div className="gutter-2">
-              <div className="transparent-bg"/>
+              <div className="transparent-bg" />
             </div>
           </div>
 
-          <ul className="non-sticky-side">
-            {stickyData.map((data, index) => (
-              <Description index={index} key={index}>
-                <p>{data.description}</p>
-              </Description>
-            ))}
-          </ul>
+          <div className="grid-wrapper">
+            <div className="grid">
+              <ul className="non-sticky-side">
+                {stickyData.map((data, index) => (
+                  <Description index={index} key={index}>
+                    <p>{data.description}</p>
+                  </Description>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </ActiveIndexProvider>
       <div className="full-vp" />
