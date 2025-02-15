@@ -8,6 +8,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --section-heading: clamp(2.6rem, 5vw, 3.2rem);
+  --secondary-heading: clamp(2.4rem, 5vw, 2.8rem);
+  --p-text: clamp(1.8rem, 2.5cqi, 2.4rem);
+
   --check: 3px solid pink;
   --slider-bg: #FF322C;
 
@@ -68,10 +72,18 @@ button {
   }
 }
 
+h2 {
+  font-size: var(--section-heading);
+}
+
+p {
+  font-size: var(--p-text);
+  text-wrap-style: balance;
+}
 
 h2, p {
-  font-size: 2.4rem;
-  color: #e5e7eb;
+  /* color: #e5e7eb; */
+  color: black;
 }
 
 .half-vp {
@@ -82,30 +94,34 @@ h2, p {
 }
 
 .section-wrapper {
-  /* position: relative; */
+  position: relative;
+  height: 500svh;
+  display: grid;
+  /* I had to specify a fixed size for the first column so the other one with a width 
+      of -svw wouldn't take over the other content space, it will do so when using -fr unit*/
+  grid-template-columns: calc(30rem + 5rem) 1fr; /* 5rem is padding, maybe I'll remove it from here and adding it inside the element itself*/
+  padding-inline: 6rem;
   border: var(--check);
 }
 
 .sticky-side {
-  grid-column: 2 / 5;
   position: sticky;
   top: 2rem;
   max-height: calc(9rem * 3); /*3 is the number of shown labels at once*/
   overflow: hidden;
+
+  background-color: palevioletred;
 
   border: var(--check);
   border-color: royalblue;
 }
 
 .non-sticky-side {
-  grid-column: 5 / 11;
+  position: sticky;
+  top: 2rem;
   display: flex;
-  flex-direction: column;
-  /* I decided to add the space in the .description-list items*/
-   /* padding-top: 50svh;  */
+  /* max-height: 100%; */
 
-   position: relative;
-   z-index: 2;
 
   border: var(--check);
   border-color: royalblue;
@@ -116,8 +132,6 @@ h2, p {
   display: flex;
   flex-direction: column;
   margin-block: 9rem;
-  z-index: 2;
-
 
   transform: translate3d(0, 0, 0);
   transition: all 0.4s ease-in;
@@ -131,13 +145,16 @@ h2, p {
 }
 
 .description-list {
-  height: 80svh;
   /* as the same as the height of the label */
-  padding-top: 8rem;
+  padding-top: 9rem;
   transition: all 0.4s ease-in;
 
   border: var(--check);
   border-color: yellow;
+
+  &>* {
+    width: 80svw;
+  }
 }
 
 .gutter-1 {
@@ -182,7 +199,8 @@ h2, p {
 }
 
 .grid {
+  container-type: inline-size;
   display: grid;
-  grid-template-columns: repeat(12, minmax(min(8.3333rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(8.3333rem, 100%), 1fr));
   gap: 2rem;
 }

@@ -9,7 +9,8 @@ type Props = {
 };
 
 export default function Description({ index, children }: Props) {
-  const ref = useRef<HTMLHeadingElement>(null);
+  const ref = useRef<HTMLParagraphElement>(null);
+  /* CHANGE LATER: useScroll instead of  isInView*/
   const isInView = useInView(ref, {amount: 0.6});
   const { setActiveIndex } = useActiveIndexContext();
 
