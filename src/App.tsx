@@ -10,11 +10,13 @@ export default function App() {
       <div className="half-vp" />
       <ActiveIndexProvider>
         <div className="section-wrapper">
+
           <div className="sticky-side">
-          <div className="red-bg" />
             <MovingList>
               {stickyData.map((data, index) => (
-                <Label key={index} index={index}>{data.title}</Label>
+                <Label key={index} index={index}>
+                  {data.title}
+                </Label>
               ))}
             </MovingList>
           </div>
@@ -26,6 +28,7 @@ export default function App() {
               </Description>
             ))}
           </ul>
+
         </div>
       </ActiveIndexProvider>
       <div className="full-vp" />
