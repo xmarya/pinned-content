@@ -10,7 +10,9 @@ export default function Label({index, children}:Props) {
     const {activeIndex} = useActiveIndexContext();
 
     return (
-        <motion.h2 initial={{opacity: 0.3}} animate={activeIndex === index ? {opacity: 1} : "" }>{children}</motion.h2>
+        <li>
+            <motion.h2 initial={{opacity: 0.3}} animate={activeIndex === index ? {opacity: 1} : "" }>{children}</motion.h2>
+        </li>
     )
 
 }

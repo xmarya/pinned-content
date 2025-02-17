@@ -34,9 +34,13 @@ html {
 }
 
 body {
- width: 128rem;
+ max-width: 128rem;
  background-color: #e5e7eb;
- color: #242424;
+ color: #e5e7eb;
+ scrollbar-width: thin;
+ scroll-behavior: smooth;
+ scroll-snap-type: mandatory y;
+
  
 }
 
@@ -48,6 +52,9 @@ a {
   &:hover {
     color: #535bf2;
   }
+}
+ul {
+  list-style: none;
 }
 
 button {
@@ -79,11 +86,7 @@ h2 {
 p {
   font-size: var(--p-text);
   text-wrap-style: balance;
-}
-
-h2, p {
-  /* color: #e5e7eb; */
-  color: black;
+  color: currentColor;
 }
 
 .half-vp {
@@ -93,13 +96,14 @@ h2, p {
   height: 100svh;
 }
 
-.section-wrapper {
+.wrapper {
   position: relative;
-  height: 500svh;
+  /* CHANGE LATER: mke the height to be dynamic depending on the provided list */
+  height: 500svh; /* each of the 5 items * 100svh */
   display: grid;
   /* I had to specify a fixed size for the first column so the other one with a width 
       of -svw wouldn't take over the other content space, it will do so when using -fr unit*/
-  grid-template-columns: calc(30rem + 5rem) 1fr; /* 5rem is padding, maybe I'll remove it from here and adding it inside the element itself*/
+  grid-template-columns: 35rem 1fr;
   padding-inline: 6rem;
   border: var(--check);
 }
@@ -107,28 +111,15 @@ h2, p {
 .sticky-side {
   position: sticky;
   top: 2rem;
-  max-height: calc(9rem * 3); /*3 is the number of shown labels at once*/
+  /*3 is the number of shown labels at once*/
+  max-height: calc(9rem * 3); 
   overflow: hidden;
 
   background-color: palevioletred;
-
-  border: var(--check);
-  border-color: royalblue;
 }
 
-.non-sticky-side {
-  position: sticky;
-  top: 2rem;
-  display: flex;
-  /* max-height: 100%; */
-
-
-  border: var(--check);
-  border-color: royalblue;
-}
 
 .label-list {
-  position: relative;
   display: flex;
   flex-direction: column;
   margin-block: 9rem;
@@ -145,62 +136,24 @@ h2, p {
 }
 
 .description-list {
-  /* as the same as the height of the label */
-  padding-top: 9rem;
+  height: 100%;
+  /* width: 100svw; 
+    tis quest was helpful to achieve the desired behaviour I was looking for,
+    I wanted the flex container's width to not be specified, but to take its own space from the children's
+  */
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+
   transition: all 0.4s ease-in;
 
-  border: var(--check);
-  border-color: yellow;
-
-  &>* {
-    width: 80svw;
+  > * {
+    width: 60svw;
+    color: palevioletred;
+   
   }
-}
-
-.gutter-1 {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  position: absolute;
-}
-
-.gutter-2 {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  position: absolute;
-}
-
-.red-bg {
-  height: 100%;
-  background-color: var(--slider-bg);
-}
-
-.transparent-bg {
-  height: 100%;
-  background: linear-gradient(0deg,
-    #FF322C 5%,
-    rgba(255, 50, 44, 0) 35%,
-    rgba(255, 50, 44, 0) 65%,
-    #FF322C 95%);
 }
 
 .white-text {
   color: orange;
-}
-
-.grid-wrapper {
-  max-width: 100rem;
-  margin-inline: auto;
-}
-
-.grid {
-  container-type: inline-size;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(8.3333rem, 100%), 1fr));
-  gap: 2rem;
 }

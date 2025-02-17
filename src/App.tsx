@@ -1,15 +1,21 @@
+import { useRef } from "react";
 import Description from "./Components/Description";
 import Label from "./Components/Label";
 import MovingList from "./Components/MovingList";
 import { stickyData } from "./data/stickyData";
 import { ActiveIndexProvider } from "./hooks/useActiveIndex";
+import { motion, useScroll, useTransform } from "motion/react";
 
 export default function App() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const {scrollYProgress} = useScroll({target: scrollRef});
+  const x = useTransform(scrollYProgress, [0, 1], ["0", "-99%"]);
+
   return (
     <>
       <div className="half-vp" />
       <ActiveIndexProvider>
-        <div className="section-wrapper">
+        <div ref={scrollRef} className="wrapper">
 
           <div className="sticky-side">
             <MovingList>
@@ -21,13 +27,15 @@ export default function App() {
             </MovingList>
           </div>
 
-          <ul className="non-sticky-side">
-            {stickyData.map((data, index) => (
-              <Description index={index} key={index}>
-                <p>{data.description}</p>
-              </Description>
-            ))}
-          </ul>
+          <div className="sticky-side">
+            <motion.ul className="description-list" style={{x}}>
+              {stickyData.map((data, index) => (
+                <Description key={index} index={index}>
+                  <p>{data.description}</p>
+                </Description>
+              ))}
+            </motion.ul>
+          </div>
 
         </div>
       </ActiveIndexProvider>
