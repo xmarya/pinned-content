@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useActiveIndexContext } from "../hooks/useActiveIndex";
+
 type Props = {
     children: React.ReactNode
 }
