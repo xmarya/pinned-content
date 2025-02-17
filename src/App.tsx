@@ -9,7 +9,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 export default function App() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const {scrollYProgress} = useScroll({target: scrollRef});
-  const x = useTransform(scrollYProgress, [0, 1], ["0", "-80%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0", "-99%"]);
 
   return (
     <>

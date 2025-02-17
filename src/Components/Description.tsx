@@ -17,10 +17,9 @@ export default function Description({ index, children }: Props) {
 
 
   useEffect(() => {
-    console.log("render Paragraphs", index);
+
     if( !isInView ) return;
     setActiveIndex(index);
-    console.log("render inView", index, isInView);
 
   }, [isInView, index, setActiveIndex]);
 
